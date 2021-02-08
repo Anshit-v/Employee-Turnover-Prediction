@@ -6,4 +6,4 @@ A Company uses this predictive analysis to measure how many employees they will 
 
 After calculating accuracy, f1 score from various models like Random Forest, KNN , XGBoost , etc. I have selected Random forest as it was providing highest accuracy.
 
-Further for front end , I have used Flask then deployed model on Heroku . 
+Further for front end , I have used Flask then deployed the model on Heroku . 
