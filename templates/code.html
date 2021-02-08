@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>Web Page Design</title>
+
+<body>
+<style>
+body {background-color:#8d99ae;}
+
+.form {
+  
+  background-color: HoneyDew;
+  text-align: right-algin;
+  margin-left : 20%;
+  margin-right : 20%;
+  font-size : 120%;
+  padding : 50px;
+  padding-left: 100px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.submit{
+  text-align: center
+}
+</style>
+
+<h1 style="text-align:center">Employee Turnover Prediction</h1>
+<div class="form">
+
+<form name="passdata" action="/prediction" method="POST" enctype="multipart/form-data">
+<h3>Enter User Details</h3>
+
+<label for="satisfaction_level"><b>Satisfaction Level : </b></label>
+<input type="number" step="0.01" min="0" id="satisfaction_level" name="satisfaction_level" required><br><br>       
+
+<label for="last_evaluation"><b>Last Evaluation : </b></label>
+<input type="number" step="0.01" min="0" id="last_evaluation" name="last_evaluation" required><br><br>
+
+<label for="number_project"><b>Number Of Project : </b></label>
+<input type="number" min="0" id="number_project" name="number_project" required><br><br>
+
+<label for="average_montly_hours"><b>Average Monthly Hours : </b></label>
+<input type="number" min="0" id="average_montly_hours" name="average_montly_hours" required><br><br>
+
+<label for="time_spend_company"><b>Time Spend In Company (in years) : </b></label>
+<input type="number" min="0"id="time_spend_company" name="time_spend_company" required><br><br>
+
+<label for="work_accident"><b>Work Accident : </b></label>
+<input type="number" id="work_accident" name="work_accident" min="0" max="1" required> (Enter <strong>0</strong> if not happened , <strong>1</strong> if happened)<br><br>
+
+<label for="promotion_last_5years"><b>Promotion in Last Five Years : </b></label>
+<input type="number" min="0" max="1" id="promotion_last_5years" name="promotion_last_5years" required><br><br>
+
+<label for="department"><b>Department : </b></label>
+    <select name="department" id="department" required>
+        <option disabled selected value> -- select an option -- </option>
+        <option value="sales"> Sales </option>
+        <option value="accounting"> Accounting </option>
+        <option value="hr"> HR </option>
+        <option value="technical"> Technical </option>
+        <option value="support"> Support </option>
+        <option value="management"> Management </option>
+        <option value="it"> IT </option>
+        <option value="product_mng"> Product Management </option>
+        <option value="marketing"> Marketing </option>
+        <option value="randD"> RandD </option>
+    </select>
+    <br><br>
+
+<label for="salary"><b>Salary : </b></label>
+<input type="number" min="0" max="2" id="salary" name="salary" required>  (Enter <strong>0</strong> for low salary , <strong>1</strong> for medium salary , <strong>2</strong> for high salary) <br><br>
+
+
+<div class="submit">
+    <input type="submit" value="     PREDICT     ">
+    <br><br>
+    {{prediction_text}}
+</div>
+
+
+</form>
+</div>
+</body>
+</html>
