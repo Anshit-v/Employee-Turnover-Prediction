@@ -4,18 +4,16 @@ import pickle
 
 app = Flask(__name__)
 model = pickle.load(open('rforest_model.pkl', 'rb'))
-
 @app.route('/')
 
 def home():
     #print("hlw1")    
     
     return render_template('code.html')
-  
-@app.route('/prediction',methods =['POST'])
 
+@app.route('/prediction',methods =['POST'])
 def prediction():
-    print("hlw2")    
+    #print("hlw2")    
     sales=0
     accounting=0
     hr=0
@@ -38,7 +36,6 @@ def prediction():
         promotion_last_5years = request.form['promotion_last_5years']
         """
         department = request.form['department']
-        
         
         randD = 0
         if department == "sales":
@@ -71,8 +68,12 @@ def prediction():
         
         predi = model.predict(final_data)
         print(predi)        
+        if predi==0:
+            status=" Employee will stay in the organisation."
+        elif predi==1:
+            status=" Employee might leave the organisation."
            
-        return render_template('code.html',prediction_text ="Prediction : {}".format("\n Employee might leave the organisation." if predi==1 else "\n Employee will stay in the organisation."))
+        return render_template('code.html',Dep=department,prediction_text = status,Satisfaction_Level=request.form['satisfaction_level'],last_evaluation = request.form['last_evaluation'],number_project = request.form['number_project'],average_montly_hours = request.form['average_montly_hours'],time_spend_company = request.form['time_spend_company'],work_accident = request.form['work_accident'],promotion_last_5years = request.form['promotion_last_5years'],salary = request.form['salary'])
     return render_template('code.html')
         
 if __name__ == "__main__":
